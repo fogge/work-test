@@ -43,8 +43,8 @@ class Scrollview {
 
   getRenderingItems(arr) {
     return arr.map(gifObj => {
-      return `<div class="gif-holder col-6 d-flex align-items-center justify-content-center">
-    <img src="${gifObj.images.original.url}" alt="Another gif bites the dust" class="col-12">
+      return `<div class="gif-holder col-6 d-flex justify-content-center align-items-center my-3">
+    <img src="${gifObj.images.original.url}" alt="Another gif bites the dust" class="col-12 picture p-0">
     </div>
     `
     })

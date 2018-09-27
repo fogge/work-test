@@ -1,16 +1,32 @@
 body {
-	box-sizing: border-box;
+  box-sizing: border-box;
+  header {
+    nav {
+      background: rgba(255,255,255, 0.98);
+      color: #4a90e0;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+      div {
+      }
+    }
+  }
+  main {
+    margin-top: 56px;
+    background: linear-gradient(to top, #cce3fc, #e8f7d0);
+    .picture {
+      border: 20px solid white;
+      border-radius: 5px;
+      box-shadow: 0px 5px 10px #888;
+    }
+  }
 }
 
-.gif-holder {
-	border: 1rem solid black;
-	background: black;
-}
+
 
 $count: 10;
 $time: 2; //in seconds
 $size: 100;
-$color:#41a500;
+$color:#4a90e0;
 
 .holder {
   position: fixed;

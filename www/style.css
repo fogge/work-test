@@ -2,9 +2,22 @@ body {
   box-sizing: border-box;
 }
 
-.gif-holder {
-  border: 1rem solid black;
-  background: black;
+body header nav {
+  background: rgba(255, 255, 255, 0.98);
+  color: #4a90e0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+}
+
+body main {
+  margin-top: 56px;
+  background: linear-gradient(to top, #cce3fc, #e8f7d0);
+}
+
+body main .picture {
+  border: 20px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #888;
 }
 
 .holder {
@@ -50,7 +63,7 @@ body {
   top: 0%;
   width: 13%;
   height: 13%;
-  background-color: #41a500;
+  background-color: #4a90e0;
   transform: translateX(-50%);
   border-radius: 50%;
 }
