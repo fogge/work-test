@@ -4,6 +4,13 @@ body {
   box-sizing: border-box;
   color: $primaryColor;
 
+  .background {
+    height: 100vh;
+    background: linear-gradient(to top, #cce3fc, #e8f7d0);
+    position: fixed;
+    z-index: -200;
+  }
+
   header {
     nav {
       background: rgba(255, 255, 255, 0.98);
@@ -14,9 +21,7 @@ body {
   }
 
   main {
-    min-height: 94vh;
     margin-top: 56px;
-    background: linear-gradient(to top, #cce3fc, #e8f7d0);
 
     .picture {
       box-sizing: content-box;
@@ -72,10 +77,11 @@ body {
         object-fit: contain;
         border-radius: 0;
         box-shadow: none;
-
+        opacity: 0.9;
         &:hover {
-          transform: scale(1.05);
+          transform: scale(1.02);
           cursor: pointer;
+          opacity: 1;
         }
 
       }
@@ -85,7 +91,7 @@ body {
 }
 
 
-
+// loading
 $count: 10;
 $time: 2; //in seconds
 $size: 100;

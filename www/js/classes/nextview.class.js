@@ -17,10 +17,10 @@ class Nextview {
   render(){
     $('main article').append(`
     <div class="row main-picture align-self-center mt-3 col-10 p-0"></div>
-    <div class="row col-10 justify-content-between align-items-center mt-5 flex-nowrap p-0">
+    <div class="row col-10 justify-content-between align-items-center mt-4 flex-nowrap p-0 mb-4">
       <div class="left-picture col-4 p-3"></div>
       <button class="quit-to-second" title="Go back to scrolling mode"><i class="fas fa-times"></i></button>
-      <div class="right-picture col-4 p-3"></div>    
+      <div class="right-picture col-4 p-3"></div>
     </div>
     `)
     $('.main-picture').append(this.allImgs[this.indexInImgs]);

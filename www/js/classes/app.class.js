@@ -2,9 +2,13 @@ class App {
   constructor(){
     this.scrollview = new Scrollview(this);
     this.eventHandlers();
+    this.setBackgroundWidth();
     this.view = 2;
   }  
   
+  setBackgroundWidth(){
+    $('.background').css("width", $('nav div').eq(0).width())
+  }
   eventHandlers(){
     let that = this;
     $(document).on('click', '.gif-holder', function() {

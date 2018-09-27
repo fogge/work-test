@@ -2,6 +2,7 @@ class Scrollview {
   constructor(app) {
     this.app = app;
     this.start();
+    this.eventHandlers();
   }
 
   start() {
@@ -48,6 +49,13 @@ class Scrollview {
     <img src="${gifObj.images.original.url}" alt="Another gif bites the dust" class="col-12 picture p-0">
     </div>
     `
+    })
+  }
+
+  eventHandlers(){
+    $(document).on('click', '.reload', (e) => {
+      e.preventDefault();
+      this.app;
     })
   }
 

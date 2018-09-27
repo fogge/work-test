@@ -3,6 +3,13 @@ body {
   color: #4a90e0;
 }
 
+body .background {
+  height: 100vh;
+  background: linear-gradient(to top, #cce3fc, #e8f7d0);
+  position: fixed;
+  z-index: -200;
+}
+
 body header nav {
   background: rgba(255, 255, 255, 0.98);
   font-family: 'Roboto', sans-serif;
@@ -10,9 +17,7 @@ body header nav {
 }
 
 body main {
-  min-height: 94vh;
   margin-top: 56px;
-  background: linear-gradient(to top, #cce3fc, #e8f7d0);
 }
 
 body main .picture {
@@ -75,12 +80,14 @@ body main .right-picture .picture {
   object-fit: contain;
   border-radius: 0;
   box-shadow: none;
+  opacity: 0.9;
 }
 
 body main .left-picture .picture:hover,
 body main .right-picture .picture:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   cursor: pointer;
+  opacity: 1;
 }
 
 .holder {
