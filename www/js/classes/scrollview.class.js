@@ -1,9 +1,10 @@
 class Scrollview {
   constructor(app) {
     this.app = app;
+    this.offset = 0;
     this.start();
     this.eventHandlers();
-    this.offset = 0;
+
   }
 
   start() {
@@ -18,11 +19,8 @@ class Scrollview {
   loadGifs(offset = this.offset) {
     this.offset = offset + 30;
     $('.loader').removeClass('d-none');
-
-
-    $.get(`http://api.giphy.com/v1/gifs/trending?&api_key=ANnB9Knl5Ao5IfSVzu1bUTeymhbRTYLY&limit=30&offset=${this.offset}`)
+    $.get(`http://api.giphy.com/v1/gifs/trending?&api_key=WZO5hqaoZHky7EoOBDOcQpbUYHadDxsf&limit=30&offset=${this.offset}`)
       .done((data) => {
-        
         if(this.app.view == 2){
           this.app.allImgs = [...this.app.allImgs, ...this.getImageLinks(data.data)]
           $('.reload').removeClass('d-none');
@@ -35,7 +33,6 @@ class Scrollview {
           this.app.allImgs = [...this.getImageLinks(data.data), ...this.app.allImgs]
           $('.loader').addClass('d-none');
         }
-        
         // Or just do $('.loader').addClass('d-none') after .done
       });
   };
@@ -88,6 +85,7 @@ class Scrollview {
     $(document).on('click', '.reload', (e) => {
       e.preventDefault();
       $('main article').empty();
+      this.app.allImgs = [];
       this.reloadGifs();
     })
   }

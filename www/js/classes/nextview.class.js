@@ -43,7 +43,6 @@ class Nextview {
         $('main article').empty();
         this.render();
       }
-
     })
 
     $(document).on('click', '.left-picture', () => {
