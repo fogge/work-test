@@ -10,7 +10,8 @@ class App {
     $(document).on('click', '.gif-holder', function() {
       const thisImg = $(this).find('img')[0];
       const allImgs = $('img');
-      this.nextview = new Nextview(that, allImgs, thisImg)
+      this.nextview = new Nextview(that, allImgs, thisImg);
+      $('.reload').addClass('d-none');
     })
   }
 

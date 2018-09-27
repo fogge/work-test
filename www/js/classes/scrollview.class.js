@@ -15,6 +15,7 @@ class Scrollview {
 
   loadGifs() {
     let offset = $('img').length;
+    $('.reload').removeClass('d-none');
     $('.loader').removeClass('d-none');
     $.get(`http://api.giphy.com/v1/gifs/trending?&api_key=ANnB9Knl5Ao5IfSVzu1bUTeymhbRTYLY&limit=20&offset=${offset}`)
       .done((data) => {
@@ -43,7 +44,7 @@ class Scrollview {
 
   getRenderingItems(arr) {
     return arr.map(gifObj => {
-      return `<div class="gif-holder col-6 d-flex justify-content-center align-items-center my-3">
+      return `<div class="gif-holder col-5 d-flex justify-content-center align-items-center my-3">
     <img src="${gifObj.images.original.url}" alt="Another gif bites the dust" class="col-12 picture p-0">
     </div>
     `
