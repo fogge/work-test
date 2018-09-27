@@ -1,20 +1,18 @@
 class Nextview {
-  constructor(app, allImgs, clickedImg){
+  constructor(app, indexInImgs) {
     this.app = app;
     this.app.view = 3;
-    this.allImgs = allImgs;
-    this.clickedImg = clickedImg;
-    this.indexInImgs = $.inArray(this.clickedImg, this.allImgs);
+    this.indexInImgs = indexInImgs;
     this.start();
     this.eventHandlers();
   }
 
-  start(){
+  start() {
     $('main article').empty();
     this.render();
   }
 
-  render(){
+  render() {
     $('main article').append(`
     <div class="row main-picture align-self-center mt-3 col-10 p-0"></div>
     <div class="row col-10 justify-content-between align-items-center mt-4 flex-nowrap p-0 mb-4">
@@ -23,28 +21,41 @@ class Nextview {
       <div class="right-picture col-4 p-3"></div>
     </div>
     `)
-    $('.main-picture').append(this.allImgs[this.indexInImgs]);
-    $('.left-picture').append(this.allImgs[this.indexInImgs-1]);
-    $('.right-picture').append(this.allImgs[this.indexInImgs+1]);
+    $('.main-picture').append(this.app.allImgs[this.indexInImgs]);
+    $('.left-picture').append(this.app.allImgs[this.indexInImgs - 1]);
+    $('.right-picture').append(this.app.allImgs[this.indexInImgs + 1]);
   }
 
-  eventHandlers(){
+  eventHandlers() {
     $(document).on('click', '.quit-to-second', () => {
       $('main article').empty();
       this.app.view = 2;
-      this.app.scrollview.loadGifs();
+      // fixa denna
+      this.app.scrollView.renderScrollView();
     })
-    
+
     $(document).on('click', '.right-picture', () => {
-      this.indexInImgs++;
-      $('main article').empty();
-      this.render();
+      if (!this.app.allImgs[this.indexInImgs + 2]) {
+        this.app.direction = 'next';
+        this.app.scrollView.loadGifs();
+      } else {
+        this.indexInImgs++;
+        $('main article').empty();
+        this.render();
+      }
+
     })
-    
+
     $(document).on('click', '.left-picture', () => {
-      this.indexInImgs--;
-      $('main article').empty();
-      this.render();
+      if (!this.app.allImgs[this.indexInImgs - 2]) {
+        this.app.direction = 'previous';
+        this.app.scrollView.loadGifs();
+        this.indexInImgs = 31;
+      } else {
+        this.indexInImgs--;
+        $('main article').empty();
+        this.render();
+      }
     })
   }
 

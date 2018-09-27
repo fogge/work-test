@@ -1,20 +1,21 @@
 class App {
   constructor(){
-    this.scrollview = new Scrollview(this);
     this.eventHandlers();
     this.setBackgroundWidth();
     this.view = 2;
+    this.allImgs = [];
+    this.scrollView = new Scrollview(this);
+    this.direction;
   }  
   
   setBackgroundWidth(){
     $('.background').css("width", $('nav div').eq(0).width())
   }
+
   eventHandlers(){
-    let that = this;
-    $(document).on('click', '.gif-holder', function() {
-      const thisImg = $(this).find('img')[0];
-      const allImgs = $('img');
-      this.nextview = new Nextview(that, allImgs, thisImg);
+    $(document).on('click', '.gif-holder', (e) => {
+      let indexInImgs = $.inArray(e.target, $('img'));
+      this.nextview = new Nextview(this, indexInImgs);
       $('.reload').addClass('d-none');
     })
   }
