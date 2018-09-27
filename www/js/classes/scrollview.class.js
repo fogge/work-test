@@ -1,10 +1,8 @@
 class Scrollview {
   constructor(app) {
     this.app = app;
-    this.offset = 0;
     this.start();
     this.eventHandlers();
-
   }
 
   start() {
@@ -16,10 +14,9 @@ class Scrollview {
     });
   }
 
-  loadGifs(offset = this.offset) {
-    this.offset = offset + 30;
+  loadGifs(offset) {
     $('.loader').removeClass('d-none');
-    $.get(`http://api.giphy.com/v1/gifs/trending?&api_key=WZO5hqaoZHky7EoOBDOcQpbUYHadDxsf&limit=30&offset=${this.offset}`)
+    $.get(`http://api.giphy.com/v1/gifs/trending?&api_key=WZO5hqaoZHky7EoOBDOcQpbUYHadDxsf&limit=30&offset=${offset || this.app.allImgs.length}`)
       .done((data) => {
         if(this.app.view == 2){
           this.app.allImgs = [...this.app.allImgs, ...this.getImageLinks(data.data)]
@@ -42,6 +39,7 @@ class Scrollview {
   }
 
   renderScrollView(){
+    $('.reload').removeClass('d-none');
     let arr = this.app.allImgs.map(x => {
       return `
       <div class="gif-holder col-5 d-flex justify-content-center align-items-center my-3">
@@ -76,7 +74,7 @@ class Scrollview {
   getImageLinks(arr) {
     return arr.map(gifObj => {
       return `
-    <img src="${gifObj.images.original.url}" alt="Another gif bites the dust" class="col-12 picture p-0">
+    <img src="${gifObj.images.original.url}" alt="${gifObj.title}" class="col-12 picture p-0">
     `
     })
   }
