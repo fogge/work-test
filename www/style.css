@@ -121,6 +121,7 @@ body main .right-picture .picture:hover {
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
   animation: rotatePreloader 2s infinite ease-in;
+  z-index: 100;
 }
 
 @keyframes rotatePreloader {
