@@ -32,7 +32,7 @@ class App {
     $(document).on('click', '.scrollview-loader', (e) => {
       e.preventDefault();
       $('main article').empty();
-      this.scrollView.renderScrollView();
+      this.scrollView.renderScrollView(this.allImgs);
     })
 
   }

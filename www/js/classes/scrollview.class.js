@@ -22,8 +22,8 @@ class Scrollview {
         if(this.app.view == 2){
           let newImages = this.getImageLinks(data.data);
           this.app.allImgs = [...this.app.allImgs, ...newImages];
-          this.renderNewGifs(newImages);
-          this.checkIfAllLoaded();
+          this.renderScrollView(newImages);
+
         } else if (this.app.direction == 'next') {
           this.app.allImgs = [...this.app.allImgs, ...this.getImageLinks(data.data)];
           $('.loader').addClass('d-none');
@@ -40,7 +40,8 @@ class Scrollview {
     this.loadGifs();
   }
 
-  renderNewGifs(arr){
+  renderScrollView(arr){
+    $('.loader').removeClass('d-none');
     $('.reload').removeClass('d-none');
     arr = arr.map(x => {
       return `
@@ -50,18 +51,7 @@ class Scrollview {
       `    
     })
     $('.container article.card-columns').append(arr);
-  }
-
-  renderScrollView(){
-    $('.reload').removeClass('d-none');
-    let arr = this.app.allImgs.map(x => {
-      return `
-      <div class="card p-4 gif-holder">
-      ${x}
-      </div>
-      `    
-    })
-    $('.container article.card-columns').append(arr);
+    this.checkIfAllLoaded();
   }
   
   /**

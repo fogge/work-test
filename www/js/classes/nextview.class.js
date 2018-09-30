@@ -31,7 +31,7 @@ class Nextview {
       $('main article').empty();
       this.app.view = 2;
       // fixa denna
-      this.app.scrollView.renderScrollView();
+      this.app.scrollView.renderScrollView(this.app.allImgs);
     })
 
     $(document).on('click', '.right-picture', () => {
