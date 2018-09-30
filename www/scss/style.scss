@@ -17,22 +17,31 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: 900;
 
+      a {
+        color: $primaryColor;
+        &:hover {      
+          color: $primaryColor - 25;
+          text-decoration: none;
+        }
+      }
     }
   }
 
   main {
     margin-top: 56px;
 
-    .picture {
-      box-sizing: content-box;
-      border: 20px solid white;
-      border-radius: 5px;
+    div.card {
       box-shadow: 0px 5px 10px #888;
-      &:hover {
-        transform: scale(1.05);
-        cursor: pointer;
+
+      .picture {
+        &:hover {
+          transform: scale(1.03);
+          cursor: pointer;
+        }
       }
     }
+
+
 
     .quit-to-second {
       background: #fff;
@@ -53,13 +62,17 @@ body {
     }
 
     .main-picture {
-      background: white;
+      background: #fff;
+      box-shadow: 0px 5px 10px #888;
+      border-radius: 5px;
+
       .picture {
         box-sizing: border-box;
         height: 400px;
-        object-fit: contain; 
+        object-fit: contain;
         border-radius: 5px;
-        &:hover{
+
+        &:hover {
           transform: none;
           cursor: default;
         }
@@ -68,16 +81,19 @@ body {
 
     .left-picture,
     .right-picture {
-      background: white;
+      background: #fff;
       border-radius: 5px;
       box-shadow: 0px 5px 10px #888;
+      height: 200px;
+
       .picture {
         border: 0px;
-        height: 200px;
         object-fit: contain;
         border-radius: 0;
         box-shadow: none;
         opacity: 0.9;
+        margin: auto;
+
         &:hover {
           transform: scale(1.02);
           cursor: pointer;
@@ -89,6 +105,11 @@ body {
 
   }
 }
+
+.card-columns {
+  column-count: 2;
+}
+
 
 
 // loading
@@ -174,6 +195,25 @@ $color:$primaryColor;
     100% {
       transform: rotateZ((0 - ((360 / $count) * ($count - 1))) + deg);
       opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card-columns {
+    column-count: 1;
+  }
+
+  .left-picture,
+  .right-picture {
+    height: 120px !important;
+
+    .picture {
+      opacity: 1 !important;
+
+      &:hover {
+        transform: none !important;
+      }
     }
   }
 }

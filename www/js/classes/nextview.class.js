@@ -1,24 +1,24 @@
 class Nextview {
-  constructor(app, indexInImgs) {
-    this.app = app;
-    this.app.view = 3;
-    this.indexInImgs = indexInImgs;
-    this.start();
-    this.eventHandlers();
+  constructor(app) {
+    this.app = app;    
+    this.indexInImgs;
   }
 
-  start() {
+  start(indexInImgs) {
+    this.app.view = 3;
+    this.indexInImgs = indexInImgs;
+    this.eventHandlers();
     $('main article').empty();
     this.render();
   }
 
   render() {
-    $('main article').append(`
-    <div class="row main-picture align-self-center mt-3 col-10 p-0"></div>
+    $('main .next-view-container').append(`
+    <div class="row main-picture align-self-center mt-3 col-10 p-3"></div>
     <div class="row col-10 justify-content-between align-items-center mt-4 flex-nowrap p-0 mb-4">
-      <div class="left-picture col-4 p-3"></div>
+      <div class="left-picture col-4 card p-2 p-md-3"></div>
       <button class="quit-to-second" title="Go back to scrolling mode"><i class="fas fa-times"></i></button>
-      <div class="right-picture col-4 p-3"></div>
+      <div class="right-picture col-4 card p-2 p-md-3"></div>
     </div>
     `)
     $('.main-picture').append(this.app.allImgs[this.indexInImgs]);

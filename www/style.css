@@ -16,19 +16,25 @@ body header nav {
   font-weight: 900;
 }
 
+body header nav a {
+  color: #4a90e0;
+}
+
+body header nav a:hover {
+  color: #3177c7;
+  text-decoration: none;
+}
+
 body main {
   margin-top: 56px;
 }
 
-body main .picture {
-  box-sizing: content-box;
-  border: 20px solid white;
-  border-radius: 5px;
+body main div.card {
   box-shadow: 0px 5px 10px #888;
 }
 
-body main .picture:hover {
-  transform: scale(1.05);
+body main div.card .picture:hover {
+  transform: scale(1.03);
   cursor: pointer;
 }
 
@@ -51,7 +57,9 @@ body main .quit-to-second:hover {
 }
 
 body main .main-picture {
-  background: white;
+  background: #fff;
+  box-shadow: 0px 5px 10px #888;
+  border-radius: 5px;
 }
 
 body main .main-picture .picture {
@@ -68,19 +76,20 @@ body main .main-picture .picture:hover {
 
 body main .left-picture,
 body main .right-picture {
-  background: white;
+  background: #fff;
   border-radius: 5px;
   box-shadow: 0px 5px 10px #888;
+  height: 200px;
 }
 
 body main .left-picture .picture,
 body main .right-picture .picture {
   border: 0px;
-  height: 200px;
   object-fit: contain;
   border-radius: 0;
   box-shadow: none;
   opacity: 0.9;
+  margin: auto;
 }
 
 body main .left-picture .picture:hover,
@@ -88,6 +97,10 @@ body main .right-picture .picture:hover {
   transform: scale(1.02);
   cursor: pointer;
   opacity: 1;
+}
+
+.card-columns {
+  column-count: 2;
 }
 
 .holder {
@@ -395,5 +408,23 @@ body main .right-picture .picture:hover {
   100% {
     transform: rotateZ(-324deg);
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card-columns {
+    column-count: 1;
+  }
+  .left-picture,
+  .right-picture {
+    height: 120px !important;
+  }
+  .left-picture .picture,
+  .right-picture .picture {
+    opacity: 1 !important;
+  }
+  .left-picture .picture:hover,
+  .right-picture .picture:hover {
+    transform: none !important;
   }
 }
