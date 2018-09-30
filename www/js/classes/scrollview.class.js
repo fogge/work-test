@@ -9,7 +9,7 @@ class Scrollview {
   start() {
     this.loadGifs();
     $(window).scroll(() => {
-      if ($(window).scrollTop() >= $(document).height() - $(window).height() - 200 && $('.loader').hasClass('d-none') && this.app.view == 2) {
+      if ($(window).scrollTop() >= $(document).height() - $(window).height() -200 && $('.loader').hasClass('d-none') && this.app.view == 2) {
         this.loadGifs();
       }
     });
@@ -23,7 +23,6 @@ class Scrollview {
           let newImages = this.getImageLinks(data.data);
           this.app.allImgs = [...this.app.allImgs, ...newImages];
           this.renderScrollView(newImages);
-
         } else if (this.app.direction == 'next') {
           this.app.allImgs = [...this.app.allImgs, ...this.getImageLinks(data.data)];
           $('.loader').addClass('d-none');
@@ -64,16 +63,14 @@ class Scrollview {
       counter = 0;
 
     imgs.each((i, x) => {
-      x.addEventListener('load', increaseAndCheck, false);
+      x.addEventListener('load', (e) => {
+        $(e.target.closest('.gif-holder')).removeClass('d-none')
+        counter++
+        if (counter == imgLength) {
+          $('.loader').addClass('d-none');
+        }
+    }, false);
     });
-
-    function increaseAndCheck() {
-      counter++;
-      if (counter == imgLength) {
-        $('.loader').addClass('d-none');
-        $('.gif-holder.d-none').removeClass('d-none');
-      }
-    }
   }
 
   getImageLinks(arr) {
